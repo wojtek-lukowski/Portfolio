@@ -36,3 +36,7 @@ var currentScrollPos = window.pageYOffset;
   }
   prevScrollpos = currentScrollPos;
 }
+
+const date = new Date();
+const year = date.getFullYear(); 
+document.getElementById("year").innerHTML = year;
