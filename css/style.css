@@ -660,11 +660,13 @@ footer h2 {
 .dev-project svg {
   width: 3.6rem;
   height: auto;
+  opacity: .7;
 }
 
 .dev-controls svg:hover {
-  transform: translate(0, -5px);
-  stroke: white;
+  transform: translate(0, -4px);
+  opacity: 1;
+  /* stroke: white; */
   /* stroke-width: 4; */
   transition-duration: .3s;
   /* transition-property: transform; */
@@ -685,7 +687,7 @@ footer h2 {
 .dev-controls {
   display: flex;
   justify-content: end;
-  gap: var(--gap4);
+  gap: var(--gap3);
   align-items: center;
 }
 
