@@ -5,6 +5,17 @@ Header & Footer: #373457;
 Button default: #621C8D;
 Button hovered: #B56F7C;
 */
+:root {
+  --background-color: #0B192E;
+  /* --background-color: #020202; */
+  --font-light: #CDD7F5;
+  --font-dark: #8993AF;
+  --font-accent: #6CE4FE;
+  /* --font-accent: #40D4C7; */
+
+  --border-radius: 3px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -14,7 +25,8 @@ html {
 }
 
 body {
-  background-color: #0B192E;
+  background-color: var(--background-color);
+  background-color: var(--background-color);
   font-family: 'Manrope', sans-serif;
   font-size: 16px;
   font-weight: 300;
@@ -48,7 +60,7 @@ h1 {
 }
 
 .blue {
-  color: #6CE4FE;
+  color: var(--font-accent);
 }
 
 .center {
@@ -109,12 +121,12 @@ p.intro {
 }
 
 p.narrow {
-  max-width: 275px;
+  max-width: 500px;
 }
 
 b.neon {
   font-weight: 100;
-  color: #6CE4FE;
+  color: var(--font-accent);
   opacity: 80%;
 }
 
@@ -130,11 +142,11 @@ b.neon {
 
 img {
   width: 100%;
-  border-radius: 3px;
+  border-radius: var(--border-radius);
 }
 
 svg {
-  border-radius: 3px;
+  border-radius: var(--border-radius);
 }
 
 img.gif {
@@ -150,7 +162,7 @@ img.gif {
 iframe {
   width: 100%;
   height: auto;
-  border-radius: 3px;
+  border-radius: var(--border-radius);
 }
 
 a,
@@ -170,7 +182,7 @@ a:active {
 
 .body a,
 .body a:visited {
-  color: #0B192E;
+  color: var(--background-color);
   font-weight: 500;
   text-decoration: underline;
   transition-property: opacity;
@@ -197,12 +209,12 @@ header a:hover {
   display: inline-block;
   min-width: 150px;
   text-align: center;
-  color: #6CE4FE;
-  background-color: #0B192E;
+  color: var(--font-accent);
+  background-color: var(--background-color);
   font-weight: 600;
   padding: 10px;
-  border-radius: 3px;
-  border: 1px solid #6CE4FE;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--font-accent);
   transition-duration: 0.2s;
   transition-property: opacity;
 }
@@ -210,7 +222,7 @@ header a:hover {
 .button:hover,
 .button:focus,
 .button.active {
-  background-color: #121F31;
+  background-color: var(--background-color);
   opacity: 80%;
   text-decoration: none;
 }
@@ -224,7 +236,8 @@ header a:hover {
 }
 
 header {
-  background-color: #0B192E;
+  background-color: var(--background-color);
+  background-color: var(--background-color);
   padding: 10px;
   width: 100%;
   color: #CDD7F5;
@@ -251,7 +264,7 @@ nav ul li a:visited {
 nav ul li a:hover,
 a ul li a:focus,
 a ul li a:active {
-  color: #6CE4FE;
+  color: var(--font-accent);
   text-decoration: underline;
 }
 
@@ -307,7 +320,7 @@ main {
 
 .backgroundlight {
   background-color: #ffffff;
-  color: #0B192E;
+  color: var(--background-color);
 }
 
 .main-image {
@@ -353,7 +366,7 @@ main {
 
 .bottomborder {
   padding-bottom: 20px;
-  border-bottom: 2px solid #0B192E;
+  border-bottom: 2px solid var(--background-color);
 }
 
 .resume {
@@ -365,7 +378,7 @@ main {
 }
 
 footer {
-  background-color: #0B192E;
+  background-color: var(--background-color);
   padding: 10px;
   color: #8993AF;
   text-align: center;
@@ -395,8 +408,8 @@ footer h2 {
 .button.backtolist,
 .button.backtolist:visited {
   background-color: transparent;
-  color: #0B192E;
-  border: 2px solid #0B192E;
+  color: var(--background-color);
+  border: 2px solid var(--background-color);
   transition-property: background-color;
   margin-bottom: 30px;
 }
@@ -404,9 +417,9 @@ footer h2 {
 .button.backtolist:hover,
 .button.backtolist:focus,
 .button.backtolist:active {
-  background-color: #0B192E;
-  color: #6CE4FE;
-  border: 2px solid #0B192E;
+  background-color: var(--background-color);
+  color: var(--font-accent);
+  border: 2px solid var(--background-color);
   opacity: 100%;
 }
 
@@ -421,7 +434,7 @@ footer h2 {
 
 .casestudy {
   background-color: #fff;
-  color: #0B192E;
+  color: var(--background-color);
   padding: 5px 0 50px;
 }
 
@@ -450,7 +463,7 @@ footer h2 {
 
 .blueline {
   padding-bottom: 10px;
-  border-bottom: 1px solid #6CE4FE;
+  border-bottom: 1px solid var(--font-accent);
 }
 
 .name {
@@ -685,7 +698,7 @@ footer h2 {
   }
 
   .onlight {
-    background-color: #0B192E;
+    background-color: var(--background-color);
     border: none;
     color: #CDD7F5;
   }
@@ -737,7 +750,7 @@ footer h2 {
 
   .blueline {
     padding-bottom: 100px;
-    border-bottom: 1px solid #6CE4FE;
+    border-bottom: 1px solid var(--font-accent);
   }
 }
 
