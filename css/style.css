@@ -640,7 +640,7 @@ footer h2 {
 .dev-projects {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap3);
+  gap: var(--gap7);
   overflow-x: auto;
   padding-top: 1rem;
 }
@@ -661,6 +661,7 @@ footer h2 {
   width: 100%;
   height: 30rem;
   height: auto;
+  position: relative;
   /* border: solid 1px var(--font-accent); */
 }
 
@@ -669,10 +670,19 @@ footer h2 {
   object-fit: cover;
   margin-right: var(--gap2);
   border-radius: var(--border-radius);
-  /* filter: grayscale(80%); */
+  filter: grayscale(100%);
 }
 
-.dev-project img::after {
+.dev-project img:hover {
+  filter: grayscale(0);
+  
+}
+
+.dev-project:nth-of-type(2) img {
+  object-position: 0 50%;
+}
+
+/* .dev-project img::after {
 content: '';
 position: absolute;
 display: block;
@@ -683,10 +693,35 @@ bottom: 0;
 width: 100%;
 height: 100%;
 opacity: .5;
-/* background-image: linear-gradient(var(--font-accent), var(--font-accent)); */
 background-color: var(--font-accent);
 z-index: 10
-}
+} */
+
+.dev-project:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  opacity: .5;
+  background-color: var(--font-accent);
+  border-radius: var(--border-radius);
+  z-index: 10
+  }
+
+  .dev-project:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background-color: none;
+    border-radius: var(--border-radius);
+    z-index: 10;
+    display: none;
+    }
 
 .dev-project svg {
   width: 2.4rem;
