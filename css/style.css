@@ -14,11 +14,14 @@ Button hovered: #B56F7C;
   --font-dark: #8993AF;
   --font-accent: #6CE4FE;
   --font-accent-50: #6CE4FE80;
+  --font-accent-50: #6CE4FE4D;
   /* --font-accent: #01CFFC; */
   /* --font-accent: #40D4C7; */
 
-  --font: 'Manrope';
+  --manrope: 'Manrope';
+  --ibm: 'IBM Plex Mono';
   --border-radius: 3px;
+  --duration: .3s;
 
   --gap: 8px;
   --gap0-5: calc(var(--gap)*0.5);
@@ -44,7 +47,7 @@ html {
 body {
   background-color: var(--background-color);
   background-color: var(--background-color);
-  font-family: var(--font), sans-serif;
+  font-family: var(--manrope), sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
   line-height: 1.6;
@@ -224,6 +227,7 @@ header a:hover {
 .button,
 .button:visited {
   display: inline-block;
+  font-family: var(--ibm);
   min-width: 150px;
   text-align: center;
   color: var(--font-accent);
@@ -232,12 +236,13 @@ header a:hover {
   padding: 10px;
   border-radius: var(--border-radius);
   border: 1px solid var(--font-accent-50);
-  transition-duration: 0.2s;
+  transition-duration: var(--duration);
 }
 
 .button:hover,
 .button:focus,
 .button.active {
+  transform: translate(0, -4px);
   /* background-color: var(--background-color); */
   border: 1px solid var(--font-accent);
   /* opacity: 80%; */
@@ -274,7 +279,7 @@ nav ul li a:visited {
   padding: 0 10px;
   text-transform: uppercase;
   font-weight: 700;
-  transition-duration: 0.2s;
+  transition-duration: var(--duration);
   transition-property: color;
 }
 
@@ -647,18 +652,19 @@ footer h2 {
   display: flex;
   width: 100%;
   height: 30rem;
+  height: auto;
   /* border: solid 1px var(--font-accent); */
 }
 
 .dev-project img {
   width: 40%;
-  height: 100%;
+  /* height: 100%; */
   object-fit: cover;
   margin-right: var(--gap2);
 }
 
 .dev-project svg {
-  width: 3.6rem;
+  width: 2.4rem;
   height: auto;
   opacity: .7;
 }
@@ -674,6 +680,7 @@ footer h2 {
 
 .dev-project h3 {
   color: var(--font-light);
+  margin-top: var(--gap2);
 }
 
 .dev-project .dev-details {
@@ -681,8 +688,19 @@ footer h2 {
 }
 
 .dev-project .dev-technologies {
+  font-family: var(--ibm);
+  font-size: 1.4rem;
   color: var(--font-light);
+  list-style: none;
 }
+
+.dev-project .dev-technologies li {
+display: inline;
+}
+
+.dev-project .dev-technologies li:not(:first-child):before {
+content: '• ';
+  }
 
 .dev-controls {
   display: flex;
