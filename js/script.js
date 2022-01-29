@@ -37,6 +37,29 @@ var currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 
+//current year in the footer
 const date = new Date();
-const year = date.getFullYear(); 
-document.getElementById("year").innerHTML = year;
+const currentYear = date.getFullYear(); 
+document.getElementById("year").innerHTML = currentYear;
+
+//color img on card hover
+showImage = (e) => {
+  const img = e.target.getElementsByTagName('img')[0];
+  img.style.mixBlendMode = 'normal';
+  // const strong = e.target.getElementsByTagName('strong')[0];
+  // strong.classList.add('strong');
+}
+
+hideImage = (e) => {
+  const img = e.target.getElementsByTagName('img')[0];
+  img.style.mixBlendMode = 'overlay';
+  // const strong = e.target.getElementsByTagName('strong')[0];
+  // strong.classList.remove('strong');
+
+}
+
+const projectCards = document.getElementsByClassName("dev-project");
+for (let i = 0; i < projectCards.length; i++) {
+  projectCards[i].addEventListener('mouseenter', showImage );
+  projectCards[i].addEventListener('mouseleave', hideImage );
+}
