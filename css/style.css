@@ -757,6 +757,7 @@ white-space: nowrap;
   justify-content: end;
   gap: var(--gap3);
   align-items: start;
+  margin-top: var(--gap3);
 }
 
 /* strong {
