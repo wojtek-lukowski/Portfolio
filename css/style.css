@@ -236,7 +236,8 @@ header a:hover {
   text-align: center;
   color: var(--font-accent);
   background-color: transparent;
-  font-weight: 600;
+  font-weight: 300;
+  font-size: 1.4rem;
   padding: 10px;
   border-radius: var(--border-radius);
   border: 1px solid var(--font-accent-50);
