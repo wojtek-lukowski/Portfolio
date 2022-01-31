@@ -100,7 +100,7 @@ h1.mob-sml {
 
 h2 {
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 300;
 }
 
 h2.subheader {
@@ -144,7 +144,7 @@ p.intro {
 }
 
 p.narrow {
-  max-width: 500px;
+  max-width: 80%;
 }
 
 b.neon {
@@ -377,7 +377,7 @@ main {
 }
 
 .fixes h1 span {
-  font-size: 0.6rem;
+  font-size: 1.6rem;
   display: block;
   margin-top: 1rem;
 }
@@ -666,7 +666,6 @@ footer h2 {
   display: flex;
   width: 100%;
   height: auto;
-
 }
 
 .alt-dev-projects {
@@ -693,20 +692,14 @@ footer h2 {
   width: 100%;
   height: 15rem;
   object-fit: cover;
+  filter: grayscale(100%);
   mix-blend-mode: overlay;
   border-radius: var(--border-radius);
 }
 
-/* .dev-project img {
-  width: 40%;
-  object-fit: cover;
-  margin-right: var(--gap2);
-  border-radius: var(--border-radius);
-  /* filter: grayscale(100%); */
-  /* filter: grayscale(70%); */
-  /* filter: opacity(30%); */
-  /* mix-blend-mode: overlay;   */
-/* } */
+.talk-now {
+  object-fit: contain !important;
+}
 
 .dev-project:nth-of-type(2) img {
   object-position: 0 50%;
@@ -741,16 +734,21 @@ footer h2 {
   list-style: none;
 }
 
+.skills-tools li,
 .dev-project .dev-technologies li {
 display: inline;
 white-space: nowrap;
-
 }
 
+.skills-tools  li:not(:last-child):after,
 .dev-project .dev-technologies li:not(:last-child):after {
   white-space: nowrap;
   content: ' •';
   }
+
+.skills-tools {
+  padding-left: 0;
+}
 
 .dev-controls {
   display: flex;
@@ -760,13 +758,42 @@ white-space: nowrap;
   margin-top: var(--gap3);
 }
 
-/* strong {
-color: var(--font-dark);
+.fixed-contact {
+  position: fixed;
+  top: 60%;
+  right: calc(100vw - 10rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap3);
 }
 
-.strong {
-  color: var(--font-accent);
-} */
+@media only screen and (max-width: 1024px) {
+  .fixed-contact {
+   display: none;
+  }
+  }
+
+@media only screen and (min-width: 1600px) {
+.fixed-contact {
+  left: calc( (100vw - 160rem) / 2 + 6.5rem);
+}
+}
+
+
+.fixed-contact svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  opacity: .5;
+}
+
+.fixed-contact svg:hover {
+  cursor: pointer;
+  opacity: 1;
+  transform: translate(0, -4px);
+  transition-duration: var(--duration);
+}
+
+
 
 
 @media only screen and (min-width: 640px) {

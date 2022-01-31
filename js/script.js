@@ -46,20 +46,24 @@ document.getElementById("year").innerHTML = currentYear;
 showImage = (e) => {
   const img = e.target.getElementsByTagName('img')[0];
   img.style.mixBlendMode = 'normal';
-  // const strong = e.target.getElementsByTagName('strong')[0];
-  // strong.classList.add('strong');
+  img.style.filter = 'grayscale(0)';
 }
 
 hideImage = (e) => {
   const img = e.target.getElementsByTagName('img')[0];
   img.style.mixBlendMode = 'overlay';
-  // const strong = e.target.getElementsByTagName('strong')[0];
-  // strong.classList.remove('strong');
-
+  img.style.filter = 'grayscale(100%)';
 }
 
+//project imgs
 const projectCards = document.getElementsByClassName("dev-project");
 for (let i = 0; i < projectCards.length; i++) {
   projectCards[i].addEventListener('mouseenter', showImage );
   projectCards[i].addEventListener('mouseleave', hideImage );
 }
+
+//profile img
+const profileSection = document.getElementById('profile');
+profileSection.addEventListener('mouseenter', showImage);
+profileSection.addEventListener('mouseleave', hideImage);
+
