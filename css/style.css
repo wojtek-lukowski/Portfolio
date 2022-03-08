@@ -16,6 +16,7 @@ Button hovered: #B56F7C;
   --font-accent: #6CE4FE;
   --font-accent-50: #6CE4FE80;
   --font-accent-50: #6CE4FE4D;
+  --orange: #df740c;
 
   --manrope: 'Manrope';
   --ibm: 'IBM Plex Mono';
@@ -109,6 +110,10 @@ h2.subheader {
 
 h2.section {
   padding: 10px 0 0 10px;
+}
+
+#projects {
+  padding: 0;
 }
 
 footer h2 {
@@ -246,7 +251,7 @@ header a:hover {
 
 .button:hover,
 .button:focus,
-.button.active {
+.button:active {
   transform: translate(0, -4px);
   opacity: 1;
   /* background-color: var(--background-color); */
@@ -349,6 +354,12 @@ main {
 
 .container {
   padding: 0 15px;
+}
+
+.container-2 {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .backgroundlight {
@@ -497,6 +508,11 @@ footer h2 {
 .blueline {
   padding-bottom: 10px;
   border-bottom: 1px solid var(--font-accent);
+}
+
+.topblueline {
+  margin: var(--gap6) auto; 
+  border-top: 1px solid var(--font-accent);
 }
 
 .name {
@@ -657,7 +673,16 @@ footer h2 {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  max-width: 80rem;
+  margin: auto;
   gap: var(--gap);
+}
+
+@media only screen and (max-width: 832px) {
+  .dev-projects-headline {
+    padding-left: var(--gap2);
+    padding-right: var(--gap2);
+  }
 }
 
 .dev-projects-headline a {
@@ -685,14 +710,14 @@ footer h2 {
   flex-wrap: wrap;
   gap: var(--gap5);
   overflow-x: auto;
-  padding-top: 1rem;
+  padding: 1rem var(--gap) 0;
   justify-content: center;
   padding-bottom: var(--gap5);
-  border-bottom: 1px solid var(--font-dark);
+  /* border-bottom: 1px solid var(--font-dark); */
   margin-top: var(--gap5);
 }
 
-.alt-dev-projects .dev-project {
+.dev-project {
   width: 32rem;
   height: auto;
   background-color: var(--background-light);
@@ -779,7 +804,7 @@ white-space: nowrap;
   gap: var(--gap3);
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1280px) {
   .fixed-contact {
    display: none;
   }
@@ -804,9 +829,6 @@ white-space: nowrap;
   transform: translate(0, -4px);
   transition-duration: var(--duration);
 }
-
-
-
 
 @media only screen and (min-width: 640px) {
   header {
