@@ -522,6 +522,19 @@ footer h2 {
   position: relative;
 }
 
+@keyframes covid-rotate {
+  0% {transform: rotate(0deg)}
+  100% {transform: rotate(360deg)}
+}
+
+#covid-img {
+  object-fit: contain;
+  animation-name: covid-rotate;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
 @keyframes swipe-left {
   0% {
     left: 100%;

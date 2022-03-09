@@ -55,6 +55,16 @@ hideImage = (e) => {
   img.style.filter = 'grayscale(100%)';
 }
 
+covidRotate = () => {
+  const covidImg= document.getElementById('covid-img');
+  covidImg.style.animationPlayState = "running";
+}
+
+covidStopRotate = () => {
+  const covidImg= document.getElementById('covid-img');
+  covidImg.style.animationPlayState = "paused";
+}
+
 //project imgs
 const projectCards = document.getElementsByClassName("dev-project");
 for (let i = 0; i < projectCards.length; i++) {
@@ -66,4 +76,9 @@ for (let i = 0; i < projectCards.length; i++) {
 const profileSection = document.getElementById('profile');
 profileSection.addEventListener('mouseenter', showImage);
 profileSection.addEventListener('mouseleave', hideImage);
+
+//covid-img
+const covidProject = document.getElementById('covid-info');
+covidProject.addEventListener('mouseenter', covidRotate);
+covidProject.addEventListener('mouseleave', covidStopRotate);
 
