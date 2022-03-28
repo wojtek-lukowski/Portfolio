@@ -836,7 +836,8 @@ white-space: nowrap;
 
 #js-menu-project li::before {
   white-space: nowrap;
-  content: '• ';
+  content: '•';
+  padding-right: var(--gap1-5);
   color: var(--font-accent);
 }
 
