@@ -44,15 +44,30 @@ document.getElementById("year").innerHTML = currentYear;
 
 //color img on card hover
 showImage = (e) => {
+  const menuProjectImg = document.getElementById('menu-project-img');
+  const menuProjectGif = document.getElementById('menu-project-gif');
   const img = e.target.getElementsByTagName('img')[0];
+  //img => gif for the menu project
+  if (img === menuProjectImg) {
+    menuProjectImg.style.display = 'none';
+    menuProjectGif.style.display = 'block';
+    menuProjectGif.style.mixBlendMode = 'normal';
+    menuProjectGif.style.filter = 'grayscale(0)';
+  }
   img.style.mixBlendMode = 'normal';
   img.style.filter = 'grayscale(0)';
 }
 
 hideImage = (e) => {
+  const menuProjectImg = document.getElementById('menu-project-img');
+  const menuProjectGif = document.getElementById('menu-project-gif');
   const img = e.target.getElementsByTagName('img')[0];
   img.style.mixBlendMode = 'overlay';
   img.style.filter = 'grayscale(100%)';
+  menuProjectImg.style.display = 'block';
+  menuProjectGif.style.display = 'none';
+  menuProjectGif.style.mixBlendMode = 'overlay';
+  menuProjectGif.style.filter = 'grayscale(100%)';
 }
 
 covidRotate = () => {
