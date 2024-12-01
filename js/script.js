@@ -1,5 +1,7 @@
 console.log("Hi, welcome to my portfolio.");
 
+const weatherButton = document.getElementById('getWeather');
+
 function underConstruction() {
   alert("Sorry, this case study is still under construction.");
 }
@@ -80,6 +82,60 @@ covidStopRotate = () => {
   covidImg.style.animationPlayState = "paused";
 }
 
+getLocation = async () => {
+  weatherButton.style.animationPlayState = "paused";
+  weatherButton.innerHTML = 'Loading...';
+  try {
+    navigator.geolocation.getCurrentPosition((position) => {
+      getWeather(position.coords.latitude, position.coords.longitude);
+    });
+  } catch (err) {
+    weatherButton.innerHTML = 'Get weather';
+    alert('There was a problem with location');
+    console.log(err);
+  }
+}
+
+getWeather =  async (latitude, longitude) => {
+    const weatherAPI = 'https://weatherize-app.herokuapp.com/weather';
+  // const weatherAPI = 'http://localhost:8080/weather'; //http-server...
+  const params = new URLSearchParams({
+    lat: latitude,
+    lng: longitude
+  }).toString();
+
+  try {
+    const response =  await fetch(`${weatherAPI}?${params}`);
+    const data = await response.json();
+    if (data) {
+      displayWeather(data);
+    } else {
+      weatherButton.innerHTML = 'Get weather';
+      alert('There was a problem with the weather data');
+    }
+
+  } catch (error) {
+    weatherButton.innerHTML = 'Get weather';
+    alert('There was a problem with loading the weather');
+    console.log(error)
+  }
+}
+
+displayWeather = (weather) => {
+  const weatherCard = document.getElementById('weather-card');
+  const city = document.getElementById('city');
+  const country = document.getElementById('country');
+  const temperature = document.getElementById('temperature');
+  const sky = document.getElementById('sky');
+  city.innerHTML = `${weather.name}, &nbsp;`;
+  country.innerHTML = weather.sys.country;
+  temperature.innerHTML = `${(weather.main.temp - 273.15).toFixed(1)} C°&nbsp;`;
+  sky.innerHTML = weather.weather[0].main;
+
+  weatherCard.style.display = 'flex';
+  weatherButton.style.display = 'none';
+}
+
 //project imgs
 const projectCards = document.getElementsByClassName("dev-project");
 for (let i = 0; i < projectCards.length; i++) {
@@ -96,4 +152,10 @@ profileSection.addEventListener('mouseleave', hideImage);
 const covidProject = document.getElementById('covid-info');
 covidProject.addEventListener('mouseenter', covidRotate);
 covidProject.addEventListener('mouseleave', covidStopRotate);
+
+const getWeatherButton = document.getElementById('getWeather');
+getWeatherButton.addEventListener('click', getLocation)
+
+
+
 
