@@ -788,6 +788,15 @@ footer h2 {
   opacity: .7;
 }
 
+svg#realtech {
+  width: auto;
+}
+
+.dev-controls {
+  display: flex;
+  align-items: center;
+}
+
 .dev-controls svg:hover {
   transform: translate(0, -4px);
   opacity: 1;

@@ -97,9 +97,8 @@ getLocation = async () => {
 }
 
 getWeather =  async (latitude, longitude) => {
-    const weatherAPI = 'https://weatherize-app.herokuapp.com/weather';
-  // const weatherAPI = 'http://localhost:8080/weather'; //http-server...
-  const params = new URLSearchParams({
+    const weatherAPI = 'https://weatherize-app.herokuapp.com/weather'; //http-server (...) -p 3000;
+    const params = new URLSearchParams({
     lat: latitude,
     lng: longitude
   }).toString();
@@ -153,8 +152,8 @@ const covidProject = document.getElementById('covid-info');
 covidProject.addEventListener('mouseenter', covidRotate);
 covidProject.addEventListener('mouseleave', covidStopRotate);
 
-const getWeatherButton = document.getElementById('getWeather');
-getWeatherButton.addEventListener('click', getLocation)
+// const getWeatherButton = document.getElementById('getWeather');
+weatherButton.addEventListener('click', getLocation)
 
 
 
