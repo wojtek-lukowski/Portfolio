@@ -84,19 +84,32 @@ covidStopRotate = () => {
 
 getLocation = async () => {
   weatherButton.style.animationPlayState = "paused";
-  weatherButton.innerHTML = 'Loading...';
-  try {
+  weatherButton.innerHTML = 'Locating...';
     navigator.geolocation.getCurrentPosition((position) => {
       getWeather(position.coords.latitude, position.coords.longitude);
-    });
-  } catch (err) {
-    weatherButton.innerHTML = 'Get weather';
-    alert('There was a problem with location');
-    console.log(err);
+      },
+      (error) => {
+        weatherButton.innerHTML = 'Get weather';
+        
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            alert('User denied the request for Geolocation.');
+            break;
+          case error.POSITION_UNAVAILABLE:
+            alert('Location information is unavailable.');
+            break;
+          case error.TIMEOUT:
+            alert('The request to get user location timed out.');
+            break;
+          default:
+            alert('An unknown error occurred.');
+            break;
+        }
+      });
   }
-}
 
 getWeather =  async (latitude, longitude) => {
+    weatherButton.innerHTML = 'Loading...';
     const weatherAPI = 'https://weatherize-app.herokuapp.com/weather'; //http-server (...) -p 3000;
     const params = new URLSearchParams({
     lat: latitude,
