@@ -711,7 +711,7 @@ footer h2 {
   height: auto;
   width: 32rem;
   background-color: var(--background-light);
-  overflow-x: auto;
+  overflow-x: hidden;
   padding: var(--gap2);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
