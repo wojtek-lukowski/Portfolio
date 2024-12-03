@@ -882,6 +882,7 @@ svg#realtech {
 
 div.weather-block {
   display: flex;
+  height: 134px;
 }
 
 div#weather-card {
@@ -918,6 +919,7 @@ div#weather-card div {
 }
 
 button#getWeather {
+  height: 40px;
   margin-top: 8px;
   margin-left: auto;
   animation-name: weather-button;
