@@ -64,7 +64,7 @@
         </div>
         <p class="intro swipe-right"><strong>Hi, my name is</strong>
         </p>
-        <div class="name">
+        <div id="name" class="name">
           <h1 class="mob-sml">Wojtek Lukowski</h1>
           <h1 class="dark mob-sml">
             { I create, fetch and display JSONs }
@@ -76,10 +76,24 @@
             &gt</strong> with
           an UX
           Design background.</p>
+        <div class="ai">
+          <div id="chat"></div>
+          <div class="chat-controls">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M21.1505 19.95L12.0004 25.2L5.70045 21.3C4.49914 20.6434 3.5585 19.5957 3.03468 18.3309C2.51086 17.066 2.43536 15.66 2.82071 14.3463C3.20606 13.0326 4.02909 11.8902 5.15317 11.1087C6.27726 10.3272 7.6348 9.95367 9.00045 10.05M18.0005 21.75L9.00045 16.5V9.00004C8.90398 7.60684 9.29652 6.22362 10.1104 5.08877C10.9243 3.95393 12.1086 3.13854 13.4592 2.78313C14.8097 2.42772 16.2419 2.55455 17.509 3.14178C18.7761 3.729 19.7987 4.73982 20.4005 6.00004M14.8505 19.95V9.30004L21.4505 5.40004C22.6392 4.66968 24.0454 4.37644 25.427 4.57079C26.8087 4.76513 28.0794 5.4349 29.0205 6.46487C29.9617 7.49484 30.5145 8.82061 30.5839 10.2141C30.6532 11.6076 30.2347 12.9817 29.4004 14.1M14.8505 16.05L24.0005 10.8L30.3005 14.7C31.5018 15.3567 32.4424 16.4043 32.9662 17.6692C33.49 18.9341 33.5655 20.3401 33.1802 21.6538C32.7948 22.9675 31.9718 24.1099 30.8477 24.8913C29.7236 25.6728 28.3661 26.0464 27.0004 25.95M18.0005 14.25L27.0004 19.5V27C27.0969 28.3932 26.7044 29.7765 25.8905 30.9113C25.0766 32.0461 23.8923 32.8615 22.5417 33.2169C21.1912 33.5724 19.759 33.4455 18.4919 32.8583C17.2248 32.2711 16.2022 31.2603 15.6005 30M21.1505 16.05V26.7L14.5504 30.6C13.3617 31.3304 11.9555 31.6236 10.5739 31.4293C9.19224 31.2349 7.92154 30.5652 6.98036 29.5352C6.03918 28.5052 5.48637 27.1795 5.41703 25.786C5.3477 24.3925 5.76616 23.0184 6.60045 21.9"
+                stroke="#6CE4FE" stroke-opacity="0.501961" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            <input id="ai-question" type="text" placeholder="Ask OpenAI about Wojtek" value=""></input>
+            <button id="open-ai-button" onclick="sendQuery()" class=" button">Send</button>
+          </div>
+        </div>
+        <p class="bot-warning">* The bot is still learning</p>
       </div>
     </div>
 
-    <div class="projects">
+    <div class=" projects">
       <div class="container-2 mob-only">
         <div>
           <br>
@@ -100,14 +114,17 @@
               <img class="dev-img" src="./img/dot4dashboard.png" alt="">
               <h3>Dot4 by REALTECH</h3>
               <p class="dev-details">
-              <p class="dev-details">Dot4 is a <strong>cloud-based hybrid tool that combines ITSM functionalities with a
+              <p class="dev-details">Dot4 is a <strong>cloud-based hybrid tool that combines ITSM functionalities
+                  with a
                   robust CMDB to support
                   comprehensive IT operations management</strong>. It enhances
                 transparency and operational
                 efficiency by providing
-                detailed dashboards, automated workflows, and service tracking capabilities. It supports ITSM processes
+                detailed dashboards, automated workflows, and service tracking capabilities. It supports ITSM
+                processes
                 like incident, problem, change, and configuration management. Moreover, the CMDB component enables
-                detailed tracking and relationship mapping of configuration items (CIs) across the IT infrastructure.
+                detailed tracking and relationship mapping of configuration items (CIs) across the IT
+                infrastructure.
               </p>
               <ul class="dev-technologies">
                 <li>Angular</li>
@@ -177,10 +194,12 @@
               <p class="dev-details">A <strong>responsive web weather app</strong> .
                 The app is <strong>using geo-location</strong> to determine user's ocation and a<a class="link-dev"
                   href="https://openweathermap.org/api" target="_blank"> public API </a>for the
-                weather data. Unregistered users can check the weather for their <strong>current locations and for their
+                weather data. Unregistered users can check the weather for their <strong>current locations and for
+                  their
                   locations
                   queries</strong>, while creating an account allows to
-                <strong>save the favorite locations</strong> and see the data right on the dashboard. The weather data
+                <strong>save the favorite locations</strong> and see the data right on the dashboard. The weather
+                data
                 is presented in
                 <strong>current, hourly and daily</strong> (2 weeks) modes and is <strong>enhanced with
                   graphics/charts</strong>.
@@ -193,6 +212,7 @@
                 <li>Recharts</li>
                 <li>Node.js / Express</li>
                 <li>MongoDB</li>
+                <li>Heroku</li>
               </ul>
               <div class="dev-controls">
                 <a class="svg" href="weatherize.html" target="_blank">
@@ -233,16 +253,61 @@
             </div>
           </div>
 
+          <div class="dev-project"> <!--openAi implementation-->
+            <div class="dev-description">
+              <img class="dev-img" id="openai-img" src="./img/openai.png" alt="">
+              <h3>OpenAI implementation</h3>
+              <p class="dev-details">
+                <strong>Backend implementation of an AI chatbot</strong> for my portfolio, built with Node.js and
+                Express
+                to handle communication with the OpenAI API. <strong>The chatbot processes user queries using
+                  curated materials
+                  such as my portfolio and CV, ensuring context-relevant responses</strong>. The backend manages
+                request routing,
+                error
+                handling, and data parsing while maintaining efficient interaction with the frontend, which displays
+                chatbot
+                responses in real time. This architecture ensures smooth integration and scalability while providing a
+                personalized
+                experience.
+              </p>
+              <ul class="dev-technologies">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Node.js / Express</li>
+                <li>Heroku</li>
+              </ul>
+              <div class="dev-controls">
+                <a href="#getWeather"><svg width="36" height="36" viewBox="0 0 36 43" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M18.0529 28.4294C18.1588 28.4647 18.2294 28.5353 18.2647 28.6412C18.3 28.7471 18.2823 28.853 18.2117 28.9588L13.8176 33.353C13.1117 34.0588 12.3 34.6235 11.3823 35.0471C10.4647 35.4706 9.52939 35.7177 8.57645 35.7883C7.6235 35.8588 6.67056 35.7883 5.71762 35.5765C4.76468 35.3647 3.89997 34.9235 3.1235 34.253C2.17056 33.5118 1.42938 32.6118 0.899968 31.553C0.370556 30.4941 0.0882027 29.4353 0.0529085 28.3765C0.0176144 27.3177 0.176438 26.2412 0.52938 25.1471C0.882321 24.053 1.48232 23.1 2.32938 22.2883L9.1588 15.4588C10.2529 14.3647 11.5235 13.553 12.9706 13.0235C14.4176 12.4941 15.9 12.353 17.4176 12.6C18.7588 12.8118 19.8176 13.2 20.5941 13.7647C21.3706 14.3294 21.9882 14.9824 22.447 15.7235C22.5176 15.9 22.5088 16.0324 22.4206 16.1206C22.3323 16.2088 22.2353 16.2883 22.1294 16.3588C22.0235 16.4294 21.9 16.5353 21.7588 16.6765L21.3882 17.0471C21.0353 17.4353 20.6118 17.6294 20.1176 17.6294C19.6235 17.6294 19.1735 17.4265 18.7676 17.0206C18.3617 16.6147 17.9117 16.3059 17.4176 16.0941C16.9235 15.8824 16.3765 15.7941 15.7765 15.8294C15.1765 15.8647 14.647 15.953 14.1882 16.0941C13.7294 16.2353 13.2529 16.553 12.7588 17.0471L4.9235 24.8824C4.46468 25.3412 4.12938 25.8706 3.91762 26.4706C3.70585 27.0706 3.63526 27.6706 3.70585 28.2706C3.77644 28.8706 3.95291 29.4706 4.23527 30.0706C4.51762 30.6706 4.97644 31.1471 5.61174 31.5C6.49409 32.1 7.44703 32.3118 8.47056 32.1353C9.49409 31.9588 10.3588 31.5353 11.0647 30.8647L14.4529 27.5294C14.5235 27.4235 14.6294 27.4059 14.7706 27.4765C15.8294 27.9353 16.9235 28.253 18.0529 28.4294ZM32.7706 1.64119C33.7235 2.38237 34.4647 3.26472 34.9941 4.28825C35.5235 5.31178 35.8235 6.37061 35.8941 7.46472C35.9647 8.55884 35.8059 9.65296 35.4176 10.7471C35.0294 11.8412 34.4118 12.7941 33.5647 13.6059L26.7353 20.4353C25.6412 21.5294 24.3706 22.3235 22.9235 22.8177C21.4765 23.3118 19.9765 23.453 18.4235 23.2412C17.0823 23.0647 16.0412 22.6765 15.3 22.0765C14.5588 21.4765 13.9412 20.8235 13.447 20.1177C13.3765 19.9765 13.3941 19.853 13.5 19.7471L14.4529 18.7941C14.8412 18.4412 15.2823 18.2647 15.7765 18.2647C16.2706 18.2647 16.6941 18.4412 17.047 18.7941C17.4706 19.2177 17.947 19.5353 18.4765 19.7471C19.0059 19.9588 19.5529 20.0647 20.1176 20.0647C20.6823 20.0647 21.2294 19.9588 21.7588 19.7471C22.2882 19.5353 22.747 19.2177 23.1353 18.7941L30.9706 11.0118C31.4294 10.553 31.7647 10.0059 31.9765 9.37061C32.1882 8.73531 32.2588 8.11766 32.1882 7.51766C32.1176 6.91766 31.9235 6.33531 31.6059 5.77061C31.2882 5.2059 30.8294 4.72943 30.2294 4.34119C29.3823 3.77649 28.4471 3.56472 27.4235 3.7059C26.4 3.84708 25.5176 4.28825 24.7765 5.02943L21.4412 8.36472C21.3353 8.47061 21.2294 8.48825 21.1235 8.41766C20.1353 7.99413 19.0412 7.65884 17.8412 7.41178C17.7 7.41178 17.6294 7.34119 17.6294 7.20002C17.6294 7.05884 17.647 6.97061 17.6823 6.93531L22.0765 2.54119C22.7823 1.83531 23.5941 1.27061 24.5118 0.847077C25.4294 0.423547 26.347 0.158841 27.2647 0.0529591C28.1823 -0.0529233 29.1353 0.035312 30.1235 0.317665C31.1118 0.600018 31.9941 1.04119 32.7706 1.64119Z"
+                      fill="#6CE4FE" />
+                  </svg></a>
+                <a class="svg" href="https://github.com/wojtek-lukowski/openai" target="_blank" rel="noopener">
+                  <svg width="896" height="872" viewBox="0 0 896 872" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M447.6 3.74462e-05C200.3 -0.0999626 0 200.1 0 447.2C0 642.6 125.3 808.7 299.8 869.7C323.3 875.6 319.7 858.9 319.7 847.5V770C184 785.9 178.5 696.1 169.4 681.1C151 649.7 107.5 641.7 120.5 626.7C151.4 610.8 182.9 630.7 219.4 684.6C245.8 723.7 297.3 717.1 323.4 710.6C329.1 687.1 341.3 666.1 358.1 649.8C217.5 624.6 158.9 538.8 158.9 436.8C158.9 387.3 175.2 341.8 207.2 305.1C186.8 244.6 209.1 192.8 212.1 185.1C270.2 179.9 330.6 226.7 335.3 230.4C368.3 221.5 406 216.8 448.2 216.8C490.6 216.8 528.4 221.7 561.7 230.7C573 222.1 629 181.9 683 186.8C685.9 194.5 707.7 245.1 688.5 304.8C720.9 341.6 737.4 387.5 737.4 437.1C737.4 539.3 678.4 625.2 537.4 650C549.477 661.877 559.066 676.041 565.608 691.666C572.15 707.29 575.512 724.061 575.5 741V853.5C576.3 862.5 575.5 871.4 590.5 871.4C767.6 811.7 895.1 644.4 895.1 447.3C895.1 200.1 694.7 3.74462e-05 447.6 3.74462e-05V3.74462e-05Z"
+                      fill="#6CE4FE" />
+                  </svg>
+              </div>
+            </div>
+          </div>
+
           <div class="dev-project" id="covid-info">
             <div class="dev-description">
               <img class="dev-img" id="covid-img" src="./img/covid.png" alt="">
               <h3>Covid Info</h3>
-              <p class="dev-details"><strong>Vanilla JavaScript client side API app </strong>displaying the covid data
+              <p class="dev-details"><strong>Vanilla JavaScript client side API app </strong>displaying the covid
+                data
                 for
                 a selected country with a
-                <strong>data visualisation (Google Charts)</strong>. User can select a country and a number of days.
+                <strong>data visualisation (Google Charts)</strong>. User can select a country and a number of
+                days.
                 Fetching the data from a<a href="https://documenter.getpostman.com/view/10808728/SzS8rjbc"
-                  class="link-dev" target="_blank"> public API.</a> Fully responsive (by changing the browser window
+                  class="link-dev" target="_blank"> public API.</a> Fully responsive (by changing the browser
+                window
                 size, need to
                 refresh for the Google Charts to be re-rendered to adjust).
               </p>
@@ -276,7 +341,8 @@
               <img class="dev-img" id="menu-project-img" src="./img/menu.png" alt="">
               <img class="dev-img" id="menu-project-gif" src="./img/menu.gif" alt="">
               <h3>Vanilla JavaScript Menu</h3>
-              <p class="dev-details">A simple menu, usually taken from some existing library, but <strong>I have built
+              <p class="dev-details">A simple menu, usually taken from some existing library, but <strong>I have
+                  built
                   it from
                   scratch using only vanilla JavaScript, HTML and CSS</strong>:</p>
               <ul id="js-menu-project">
@@ -285,7 +351,8 @@
                 <li>second click on the currently opened item closes the menu</li>
                 <li>"Esc" and a click outside the menu closes the entire menu</li>
                 <li>responsive - from 500px changes to hamburger with the same functionality for submenus</li>
-                <li>menu items and menus can be added or removed in HTML only (with proper classes) without the need to
+                <li>menu items and menus can be added or removed in HTML only (with proper classes) without the
+                  need to
                   adjust JavaScript
                 </li>
               </ul>
@@ -317,10 +384,12 @@
             <div class="dev-description">
               <img class="dev-img" src="./img/entwicklung.jpg" alt="">
               <h3>Entwicklungshelfer</h3>
-              <p class="dev-details"><a href="https://www.agdd.de/en/" class="link-dev" target="_blank">AGdD </a>is a
+              <p class="dev-details"><a href="https://www.agdd.de/en/" class="link-dev" target="_blank">AGdD
+                </a>is a
                 non-profit organization focused on the development service
                 (Entwicklungshelfer),
-                which is a special form of engagement - with contractual conditions and benefits regulated the German
+                which is a special form of engagement - with contractual conditions and benefits regulated the
+                German
                 development worker law from 1969. <strong>Frontend / styling project</strong> completed for <a
                   href="https://www.q4u.de" class="link-dev" target="_blank"> Q4U </a> Agency,
                 with
@@ -352,16 +421,19 @@
               <h3>Python port scanners</h3>
               <p class="dev-details">
                 Simple Python port scanners designed for <strong>learning Python and exploring basic
-                  networking concepts</strong>. The project helps to practice <strong>coding with sockets</strong> while
+                  networking concepts</strong>. The project helps to practice <strong>coding with sockets</strong>
+                while
                 gaining insights into how
-                ports work and understanding <strong>network security principles</strong>. It's a beginner-friendly way
+                ports work and understanding <strong>network security principles</strong>. It's a
+                beginner-friendly way
                 to
                 enhance
                 programming and pre-hacking skills.
                 <br>
                 <strong>Disclaimer:</strong> This project is for educational purposes only. Always ensure you have
                 permission before
-                scanning any network or host. Unauthorized use may be illegal, and the creator is not responsible for
+                scanning any network or host. Unauthorized use may be illegal, and the creator is not responsible
+                for
                 misuse.
               </p>
               <ul class="dev-technologies">
@@ -383,7 +455,8 @@
             <div class="dev-description">
               <img class="dev-img" src="./img/movies-react.jpg" alt="">
               <h3>Movies API - React client side</h3>
-              <p class="dev-details"> The <strong>client-side for the MoviBase application</strong> allowing users to
+              <p class="dev-details"> The <strong>client-side for the MoviBase application</strong> allowing users
+                to
                 view the details of the movies from the data base. Users need to create
                 account and all the available movies will be displayed upon login. Then they can review particular
                 titles, as well as their directors and genres. Users can also edit their profile data.</p>
@@ -419,9 +492,11 @@
               <img class="dev-img" src="./img/movies-angular.jpg" alt="">
               <h3>Movies API - Angular client side</h3>
               <p class="dev-details">The <strong>Angular version of the client-side</strong> for the MoviBase
-                application allowing users to view the details of the movies from the data base. Users need to create
+                application allowing users to view the details of the movies from the data base. Users need to
+                create
                 account and all the available
-                movies will be displayed upon login. Then they can review particular titles, as well as their directors
+                movies will be displayed upon login. Then they can review particular titles, as well as their
+                directors
                 and genres. Users can also fav and unfav movies and edit their profile data.</p>
               <ul class="dev-technologies">
                 <li>HTML</li>
@@ -456,7 +531,8 @@
               <h3>Movies API</h3>
               <p class="dev-details">This is the <strong>server-side part of my movie API that contains
                   endpoints</strong> for the
-                information regarding movies from tha data base (titles, descriptions, directors, genres and visuals) as
+                information regarding movies from tha data base (titles, descriptions, directors, genres and
+                visuals) as
                 well as on directors, genres and users. Tested with Postman during the development process.</p>
               <ul class="dev-technologies">
                 <li>JavaScript</li>
@@ -481,8 +557,10 @@
             <div class="dev-description">
               <img class="dev-img" src="./img/pokemon.jpg" alt="">
               <h3>Pokemons API</h3>
-              <p class="dev-details">The app features the names of the Pokemons and <strong>fetches the data from the
-                  API when a button with a name of an individual Pokemon is clicked</strong>, opening a modal with the
+              <p class="dev-details">The app features the names of the Pokemons and <strong>fetches the data from
+                  the
+                  API when a button with a name of an individual Pokemon is clicked</strong>, opening a modal with
+                the
                 name, height
                 and
                 image
@@ -518,10 +596,12 @@
             <div class="dev-description">
               <img class="dev-img" src="./img/evently.jpg" alt="">
               <h3>Evently (Google calendar API)</h3>
-              <p class="dev-details">Evently is a <strong>serverless progressive web app</strong> fetching the data on
+              <p class="dev-details">Evently is a <strong>serverless progressive web app</strong> fetching the
+                data on
                 the wed-dev
                 events
-                worldwide from the CareerFoundry calendar. It is using the Google API Calendar, OAuth, Serverless and
+                worldwide from the CareerFoundry calendar. It is using the Google API Calendar, OAuth, Serverless
+                and
                 AWS.The frontend has been built with React (with Create React App).</p>
               <ul class="dev-technologies">
                 <li>JSX</li>
@@ -564,12 +644,14 @@
             <div class="dev-description">
               <img class="dev-img talk-now" src="./img/talk-now.jpg" alt="">
               <h3>TalkNow (React Native chat app)</h3>
-              <p class="dev-details">TalkNow is a <strong>native app (mobile communicator)</strong>. Users enter their
+              <p class="dev-details">TalkNow is a <strong>native app (mobile communicator)</strong>. Users enter
+                their
                 name and
                 select
                 the color which will be used for rendering the start button, their messages bubble and the custom
                 actions button.
-                Possibility to send text messages, images (from the gallery and taken with the camera) and own location.
+                Possibility to send text messages, images (from the gallery and taken with the camera) and own
+                location.
                 Stores messages and displays when the user is off-line.</p>
               <ul class="dev-technologies">
                 <li>JSX</li>
@@ -619,7 +701,8 @@
           </div>
           <div class="column col-md-6 col-lg-5">
             <h3 class="notopmargin">Weatherize</h3>
-            <p class="dark">A <b class="neon">responsive web</b> weather <b class="neon">app</b> for the water sports
+            <p class="dark">A <b class="neon">responsive web</b> weather <b class="neon">app</b> for the water
+              sports
               enthusiasts. Are you brave enough?</p>
             <div class="right">
               <a href="weatherize.html" class="button">View project</a>
@@ -646,7 +729,8 @@
           <div class="column col-md-6 col-lg-5 progress">
             <h3 class="notopmargin">Weatherize Frontend Prototype</h3>
             <p class="dark">Visit the <b class="neon">frontend prototype</b>
-              of the weather web responsive app I have designed. It has been <b class="neon">developed with HTML, CSS
+              of the weather web responsive app I have designed. It has been <b class="neon">developed with HTML,
+                CSS
                 and JavaScript</b>.
             </p>
             <div class="right">
@@ -703,8 +787,10 @@
           </div>
           <div class="column col-md-6 col-lg-5 progress">
             <h3 class="notopmargin">My Portfolio Site</h3>
-            <p class="dark">This case study will present the process of <b class="neon">design and development</b> of my
-              own portfolio site (yes, the one you are currently looking at). I have <b class="neon">designed it and
+            <p class="dark">This case study will present the process of <b class="neon">design and development</b>
+              of my
+              own portfolio site (yes, the one you are currently looking at). I have <b class="neon">designed it
+                and
                 then coded myself using
                 HTML, CSS and
                 JavaScript</b>.
@@ -769,7 +855,8 @@
           </div>
           <div class="column animation col-md-6 col-lg-5">
             <h3>CSS animation example</h3>
-            <p class="dark">I created a svg image, added its code to my HTML code, added classes to the elements of the
+            <p class="dark">I created a svg image, added its code to my HTML code, added classes to the elements
+              of the
               image and animated them using @keyframes (motion and change of color).
             </p>
           </div><!-- End of text column -->
@@ -799,8 +886,10 @@
 
           <div class="column col-md-7 col-lg-8" id="my-story">
             <p class="nomargintop dark">I am a Düsseldorf based <strong> Software Engineer with a UX Design
-                background</strong>. I find pleasure in a constant debugging and I am always looking forward to a new
-              error message as a progress indicator. I work with HTML | CSS/SCSS | JavaScript | Node | Express | React |
+                background</strong>. I find pleasure in a constant debugging and I am always looking forward to a
+              new
+              error message as a progress indicator. I work with HTML | CSS/SCSS | JavaScript | Node | Express |
+              React |
               React Native |
               Angular | MongoDB and many more.
             </p>

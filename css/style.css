@@ -148,7 +148,6 @@ h4 {
 
 p.intro {
   font-size: 2rem;
-  padding-top: 30px;
 }
 
 p.narrow {
@@ -562,6 +561,10 @@ footer h2 {
   animation-play-state: paused;
 }
 
+#openai-img {
+  object-fit: contain;
+}
+
 @keyframes swipe-left {
   0% {
     left: 100%;
@@ -883,6 +886,7 @@ svg#realtech {
 div.weather-block {
   display: flex;
   height: 134px;
+  margin-bottom: 0;
 }
 
 div#weather-card {
@@ -930,6 +934,77 @@ button#getWeather {
 
 button#getWeather:hover {
   animation-play-state: paused;
+}
+
+div.ai {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--font-accent-50);
+  border-radius: var(--border-radius);
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+div#chat {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  overflow-y: auto;
+  padding: 12px;
+  scroll-behavior: smooth;
+}
+
+div.chat-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  gap: 8px;
+}
+
+input#ai-question {
+  width: 100%;
+  background-color: var(--background-color);
+  color: var(--font-accent);
+  border: 1px solid var(--font-accent-50);
+  padding-left: 12px;
+  border-radius: var(--border-radius);
+}
+
+input#ai-question:focus {
+  background-color: var(--background-color) !important;
+  color: var(--font-dark);
+}
+
+input#ai-question::placeholder {
+  color: var(--font-dark);
+  font-style: italic;
+}
+
+.query,
+.ai-answer {
+  padding: 12px 8px;
+  border-radius: 20px;
+  max-width: 60%;
+}
+
+.query {
+  margin-left: auto;
+  border: 1px solid var(--font-dark);
+  color: var(--font-dark);
+}
+
+.ai-answer {
+  margin-right: auto;
+  border: 1px solid var(--font-light);
+  color: var(--font-light);
+}
+
+.bot-warning {
+  color: var(--font-dark);
+  font-size: 1.2rem;
+  padding-left: 12px;
+  margin-top: 0;
 }
 
 @keyframes weather-button {

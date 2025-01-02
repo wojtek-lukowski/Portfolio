@@ -125,7 +125,6 @@ getWeather =  async (latitude, longitude) => {
       weatherButton.innerHTML = 'Get weather';
       alert('There was a problem with the weather data');
     }
-
   } catch (error) {
     weatherButton.innerHTML = 'Get weather';
     alert('There was a problem with loading the weather');
@@ -166,7 +165,53 @@ covidProject.addEventListener('mouseenter', covidRotate);
 covidProject.addEventListener('mouseleave', covidStopRotate);
 
 // const getWeatherButton = document.getElementById('getWeather');
-weatherButton.addEventListener('click', getLocation)
+weatherButton.addEventListener('click', getLocation);
+
+
+// openAi implementation
+const input = document.getElementById('ai-question');
+input.addEventListener('keydown', (event) =>  {
+  if (event.key === 'Enter') {
+    sendQuery();
+  }
+})
+sendQuery = async () => {
+  const url = 'https://portfolio-ai-99cb0016d38f.herokuapp.com/query';
+  // const url = 'http://localhost:8080/query';
+  const query = await document.getElementById('ai-question').value;
+  const headers = {"Content-Type": "application/json"};
+  const button = document.getElementById('open-ai-button');
+  
+  // const text = 'Wojtek Lukowski is a frontend developer working with Angular, react and others. He is currently working at Realtech.'
+  
+  if (query.trim()) {
+    button.innerHTML = '...';
+    addQuery(true, query);
+    try {
+      const response =  await fetch(url, {
+          method: 'POST', body: JSON.stringify({ query }),
+          headers
+        });
+        const text = await response.text();
+        addQuery(false, text);
+        button.innerHTML = 'Send';
+      } catch (error) {
+        console.log(error)
+      }
+    }
+}
+
+addQuery = (isQuery, content) => {
+  const chat = document.getElementById('chat');
+  const text = document.createElement('p');
+  const classToAdd = isQuery? 'query': 'ai-answer';
+
+  text.innerHTML = content;
+  text.classList.add(classToAdd);
+  chat.appendChild(text);
+  chat.scrollTo(0, chat.scrollHeight)
+  input.value = '';
+}
 
 
 
