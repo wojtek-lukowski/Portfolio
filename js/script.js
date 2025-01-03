@@ -193,7 +193,9 @@ sendQuery = async () => {
           headers
         });
         const text = await response.text();
-        addQuery(false, text);
+        if (text.trim()) {
+          addQuery(false, text);
+        }
         button.innerHTML = 'Send';
       } catch (error) {
         console.log(error)
