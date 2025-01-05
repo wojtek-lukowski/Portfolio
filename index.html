@@ -85,12 +85,11 @@
                 stroke="#6CE4FE" stroke-opacity="0.501961" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg>
-            <input id="ai-question" type="text" placeholder="Ask OpenAI about Wojtek (e.g. 'Who is Wojtek?')"
-              value=""></input>
+            <input id="ai-question" type="text" placeholder="Ask OpenAI about Wojtek" value=""></input>
             <button id="open-ai-button" onclick="sendQuery()" class=" button">Send</button>
           </div>
         </div>
-        <p class="bot-warning">* The bot is still learning, so not all the answers may be accurate</p>
+        <p class="bot-warning">* The model is still learning, therefore some of the answers may not be accurate</p>
       </div>
     </div>
 
@@ -269,9 +268,11 @@
                 error
                 handling, and data parsing while maintaining efficient interaction with the frontend, which displays
                 chatbot
-                responses in real time. This architecture ensures smooth integration and scalability while providing a
-                personalized
-                experience.
+                responses in real time. <strong>The queries and answers are stored in a database (Cloud Firestore),
+                  using a
+                  TF-IDF & cosine
+                  similarity </strong> (to prevent
+                doubling queries) <strong>and will be used for model fine-tunning</strong>.
               </p>
               <ul class="dev-technologies">
                 <li>HTML</li>
@@ -279,6 +280,7 @@
                 <li>JavaScript</li>
                 <li>Node.js / Express</li>
                 <li>Heroku</li>
+                <li>Cloud Firestore</li>
                 <li>Postman</li>
               </ul>
               <div class="dev-controls">
@@ -661,7 +663,7 @@
                 <li>JSX</li>
                 <li>React Native</li>
                 <li>Expo</li>
-                <li>Firestore/Firebase</li>
+                <li>Cloud Firestore</li>
                 <li>Gifted Chat</li>
               </ul>
               <div class="dev-controls">
