@@ -176,14 +176,13 @@ input.addEventListener('keydown', (event) =>  {
   }
 })
 sendQuery = async () => {
-  const url = 'https://portfolio-ai-99cb0016d38f.herokuapp.com/query';
-  // const url = 'http://localhost:8080/query';
+  // const url = 'https://portfolio-ai-99cb0016d38f.herokuapp.com/query';
+  const url = 'http://localhost:8080/query';
   const query = await document.getElementById('ai-question').value;
   const headers = {"Content-Type": "application/json"};
   const button = document.getElementById('open-ai-button');
-  
-  // const text = 'Wojtek Lukowski is a frontend developer working with Angular, react and others. He is currently working at Realtech.'
-  
+  const errorMessage = "Sorry, there was a problem with connection to OpenAI."
+    
   if (query.trim()) {
     button.innerHTML = '...';
     addQuery(true, query);
@@ -192,7 +191,7 @@ sendQuery = async () => {
           method: 'POST', body: JSON.stringify({ query }),
           headers
         });
-        const text = await response.text();
+        const text = response.ok? await response.text(): errorMessage;
         if (text.trim()) {
           addQuery(false, text);
         }
