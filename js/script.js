@@ -176,8 +176,8 @@ input.addEventListener('keydown', (event) =>  {
   }
 })
 sendQuery = async () => {
-  // const url = 'https://portfolio-ai-99cb0016d38f.herokuapp.com/query';
-  const url = 'http://localhost:8080/query';
+  const url = 'https://portfolio-ai-99cb0016d38f.herokuapp.com/query';
+  // const url = 'http://localhost:8080/query';
   const query = await document.getElementById('ai-question').value;
   const headers = {"Content-Type": "application/json"};
   const button = document.getElementById('open-ai-button');
@@ -213,6 +213,15 @@ addQuery = (isQuery, content) => {
   chat.scrollTo(0, chat.scrollHeight)
   input.value = '';
 }
+
+const checkIp = async () => {
+  try {
+    const response =  await fetch('http://localhost:8080/news');
+  } catch (error) {
+  }
+}
+
+checkIp();
 
 
 
