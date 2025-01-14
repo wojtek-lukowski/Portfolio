@@ -216,7 +216,7 @@ addQuery = (isQuery, content) => {
 
 const checkIp = async () => {
   try {
-    const response =  await fetch('http://localhost:8080/news');
+    const response =  await fetch('https://portfolio-ai-99cb0016d38f.herokuapp.com/news');
   } catch (error) {
   }
 }
