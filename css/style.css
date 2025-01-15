@@ -999,7 +999,7 @@ input#ai-question::placeholder {
 
 .query,
 .ai-answer {
-  padding: 12px 8px;
+  padding: 4px 8px;
   border-radius: 20px;
 }
 

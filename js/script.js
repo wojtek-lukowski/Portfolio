@@ -214,14 +214,15 @@ addQuery = (isQuery, content) => {
   input.value = '';
 }
 
-const checkIp = async () => {
+const initNews = async () => {
   try {
     const response =  await fetch('https://portfolio-ai-99cb0016d38f.herokuapp.com/news');
+    // const response =  await fetch('http://localhost:8080/news');
   } catch (error) {
   }
 }
 
-checkIp();
+initNews();
 
 
 
