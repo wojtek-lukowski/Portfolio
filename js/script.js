@@ -110,7 +110,8 @@ getLocation = async () => {
 
 getWeather =  async (latitude, longitude) => {
     weatherButton.innerHTML = 'Loading...';
-    const weatherAPI = 'https://weatherize-app.herokuapp.com/weather'; //http-server (...) -p 3000;
+    const weatherAPI = 'https://portfolio-ai-99cb0016d38f.herokuapp.com/weather'; //http-server (...) -p 3000;
+    // const weatherAPI = 'http://localhost:8080/weather'; //http-server (...) -p 3000;
     const params = new URLSearchParams({
     lat: latitude,
     lng: longitude
@@ -138,10 +139,10 @@ displayWeather = (weather) => {
   const country = document.getElementById('country');
   const temperature = document.getElementById('temperature');
   const sky = document.getElementById('sky');
-  city.innerHTML = `${weather.name}, &nbsp;`;
-  country.innerHTML = weather.sys.country;
-  temperature.innerHTML = `${(weather.main.temp - 273.15).toFixed(1)} C°&nbsp;`;
-  sky.innerHTML = weather.weather[0].main;
+  city.innerHTML = `${weather.city}, &nbsp;`;
+  country.innerHTML = weather.country;
+  temperature.innerHTML = `${weather.temperature} C°&nbsp;`;
+  sky.innerHTML = weather.sky;
 
   weatherCard.style.display = 'flex';
   weatherButton.style.display = 'none';
