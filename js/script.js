@@ -216,9 +216,41 @@ addQuery = (isQuery, content) => {
 }
 
 const initNews = async () => {
+  const serverUrl = 'https://portfolio-ai-99cb0016d38f.herokuapp.com/news';
+  const localUrl = 'http://localhost:8080/news';
   try {
-    const response =  await fetch('https://portfolio-ai-99cb0016d38f.herokuapp.com/news');
-    // const response =  await fetch('http://localhost:8080/news');
+    const response =  await fetch(serverUrl, {});
+    const news = response.ok? await response.json(): errorMessage;
+
+    if (news && news.length > 0) {
+      const newsContainer = document.getElementById('news');
+      const newsContainerInner = document.getElementById('news-inner');
+      news.forEach(entry => {
+        const newsTitle = document.createElement('a');
+        newsTitle.innerHTML = entry.title;
+        newsTitle.href = entry.link;
+        newsTitle.target = '_blank';
+        newsTitle.rel = 'noopener';
+        newsTitle.classList.add('news-title');
+        newsContainerInner.appendChild(newsTitle);
+      });
+      newsContainer.style.display = 'block';
+      const animation = 'crawl';
+      const styleSheet = document.createElement('style');
+      styleSheet.type = 'text/css';
+      styleSheet.innerHTML =`
+      @keyframes ${animation} {
+        0% {
+          left: ${newsContainer.offsetWidth}px;
+        }
+          100% {
+            left: -${newsContainerInner.offsetWidth}px;
+          }
+        }
+      `;
+      document.head.appendChild(styleSheet);
+      newsContainerInner.style.animation = `${animation} 60s linear infinite`;
+    }
   } catch (error) {
   }
 }

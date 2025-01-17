@@ -545,7 +545,7 @@ footer h2 {
 }
 
 @keyframes covid-rotate {
-  f 0% {
+  0% {
     transform: rotate(0deg);
   }
 
@@ -733,7 +733,9 @@ footer h2 {
   align-items: center;
   max-width: 80rem;
   margin: auto;
+  padding-top: 24px;
   gap: var(--gap);
+  border-top: 1px solid var(--font-accent)
 }
 
 @media only screen and (max-width: 832px) {
@@ -1018,8 +1020,56 @@ input#ai-question::placeholder {
 .bot-warning {
   color: var(--font-dark);
   font-size: 1.2rem;
-  padding-left: 12px;
   margin-top: 0;
+  padding-left: 12px;
+  padding: 4px 8px 56px;
+}
+
+#news {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  height: 48px;
+  max-width: 80rem;
+  margin: auto;
+  margin-bottom: 56px;
+  line-height: 2em;
+  padding: 8px;
+  border-radius: var(--border-radius);
+  background-color: var(--background-light);
+  box-shadow: var(--box-shadow);
+  overflow-x: hidden;
+  position: relative;
+  border-top: 1px solid var(--font-accent)
+}
+
+#news-inner {
+  position: absolute;
+  /* top: 42px; */
+  display: flex;
+  gap: 8px;
+}
+
+h3.header {
+  font-size: 2rem;
+  color: var(--font-dark);
+  padding-left: 12px;
+}
+
+a.news-title {
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 300;
+  font-size: 1.3rem;
+  background-color: var(--background-color);
+  color: var(--font-dark);
+  border-radius: 20px;
+  padding: 0 12px;
+}
+
+a.news-title:hover {
+  color: var(--font-accent)
 }
 
 @media only screen and (max-width: 500px) {
@@ -1200,7 +1250,7 @@ input#ai-question::placeholder {
   }
 
   .blueline {
-    padding-bottom: 100px;
+    padding-bottom: 50px;
     border-bottom: 1px solid var(--font-accent);
   }
 }
